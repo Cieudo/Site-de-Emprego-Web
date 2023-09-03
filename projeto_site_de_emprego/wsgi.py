@@ -1,5 +1,5 @@
 """
-WSGI config for site_de_emprego_web project.
+WSGI config for projeto_site_de_emprego project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'site_de_emprego_web.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'projeto_site_de_emprego.settings')
 
 application = get_wsgi_application()
