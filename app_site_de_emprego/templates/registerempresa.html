@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -202,50 +203,43 @@
   <body>
     <div class="testbox">
       <form action="/">
-        <div class="banner">
-          <h1>New Member Registration</h1>
+       <div class="banner">
+          <img src="{% static '' %}" alt="img do site de registro da empresa">
         </div>
+        <p>Preencha com as informações para Cadastrar sua Empresa </p>
         <div class="colums">
           <div class="item">
-            <label for="fname"> First Name<span>*</span></label>
+            <label for="fname"> Nome da Empresa<span>*</span></label>
             <input id="fname" type="text" name="fname" required/>
           </div>
-          <div class="item">
-            <label for="lname"> Last Name<span>*</span></label>
-            <input id="lname" type="text" name="lname" required/>
+            <div class="item">
+            <label for="street"> Endereço<span>*</span></label>
+            <input id="street" type="text" name="street" required/>
           </div>
-          <div class="item">
-            <label for="address1">Address 1<span>*</span></label>
-            <input id="address1" type="text"   name="address1" required/>
+            <div class="item">
+            <label for="state"> Estado<span>*</span></label>
+            <input id="state" type="text" name="state" required/>
           </div>
-          <div class="item">
-            <label for="address2">Address 2<span>*</span></label>
-            <input id="address2" type="text"   name="address2" required/>
+            <div class="item">
+            <label for="city"> Cidade<span>*</span></label>
+            <input id="city" type="text" name="city" required/>
           </div>
-          <div class="item">
-            <label for="state">State<span>*</span></label>
-            <input id="state" type="text"   name="state" required/>
+            <div class="item">
+            <label for="email"> E-mail<span>*</span></label>
+            <input id="email" type="text" name="email" required/>
           </div>
-          <div class="item">
-            <label for="zip">Zip/Postal Code<span>*</span></label>
-            <input id="zip" type="text" name="zip" required/>
-          </div>
-          <div class="item">
-            <label for="city">City<span>*</span></label>
-            <input id="city" type="text"   name="city" required/>
-          </div>
-          <div class="item">
-            <label for="eaddress">Email Address<span>*</span></label>
-            <input id="eaddress" type="text"   name="eaddress" required/>
-          </div>
-          <div class="item">
-            <label for="phone">Phone<span>*</span></label>
-            <input id="phone" type="tel"   name="phone" required/>
+            <div class="item">
+            <label for="fone"> Telefone<span>*</span></label>
+            <input id="fone" type="text" name="fone" required/>
           </div>
         </div>
         <div class="question">
-          <label>Membership Type</label>
+          <label>Plano Empresarial </label>
           <div class="question-answer">
+            <div>
+              <input type="radio" value="none" id="radio_1" name="type"/>
+              <label for="radio_1" class="radio"><span>Free</span></label>
+            </div>
             <div>
               <input type="radio" value="none" id="radio_1" name="type"/>
               <label for="radio_1" class="radio"><span>Standard</span></label>
@@ -254,34 +248,15 @@
               <input  type="radio" value="none" id="radio_2" name="type"/>
               <label for="radio_2" class="radio"><span>Premium</span></label>
             </div>
-            <div>
-              <input  type="radio" value="none" id="radio_3" name="type"/>
-              <label for="radio_3" class="radio"><span>Ultimate</span></label>
-            </div>
           </div>
         </div>
-        <div class="question">
-          <label>Preferred way to contact </label>
-          <div class="question-answer">
-            <div>
-              <input type="radio" value="none" id="radio_4" name="contact"/>
-              <label for="radio_4" class="radio"><span>Phone</span></label>
-            </div>
-            <div>
-              <input  type="radio" value="none" id="radio_5" name="contact"/>
-              <label for="radio_5" class="radio"><span>Email</span></label>
-            </div>
-            <div>
-              <input  type="radio" value="none" id="radio_6" name="contact"/>
-              <label for="radio_6" class="radio"><span>Any</span></label>
-            </div>
           </div>
         </div>
-        <h2>Terms and Conditions</h2>
+        <h2>Termos e condições </h2>
         <input type="checkbox" name="checkbox1">
-        <label>You consent to receive communications from us electronically. We will communicate with you by e-mail or phone. You agree that all agreements, notices, disclosures and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing.</label>
+        <label>Você concorda em receber nossas comunicações eletronicamente. Entraremos em contato com você por e-mail ou telefone. Você concorda que todos os acordos, avisos, divulgações e outras comunicações que fornecemos a você eletronicamente satisfazem qualquer requisito legal de que tais comunicações sejam feitas por escrito.</label>
         <div class="btn-block">
-          <button type="submit" href="/">Submit</button>
+          <button type="submit" href="/">Enviar</button>
         </div>
       </form>
     </div>

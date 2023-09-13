@@ -11,3 +11,6 @@ def register(request):
 
 def registerempresa(request):
     return render(request,'registerempresa.html')
+
+def ladingpage(request):
+    return render(request,'ladingpage.html')

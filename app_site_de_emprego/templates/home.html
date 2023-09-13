@@ -1,20 +1,24 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site de Empregos</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="static/homestyle.css"> <!-- Substitua 'seu-estilo.css' pelo caminho para seu arquivo CSS -->
 </head>
 <body>
     <header>
-        <!-- <img src="{% static 'contratante.jpg' %}" alt="Logo do Site de Empregos"> -->
-        <h1>Bem-vindo ao Site de Empregos</h1>
-        <p>Encontre o emprego dos seus sonhos</p>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#"><img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos"></a>
+                <h1>Encontre o Emprego dos seus Sonhos</h1>
+            </div>
+        </nav>
         <section class="login-section">
             <a href="/loginusers" class="login-button">Login</a>
             <a href="/register" class="signup-button">Cadastre-se</a>
+            <a href="/registerempresa" class="signup-button">Cadastre sua empresa</a>
         </section>
     </header>
     <section class="search-jobs">

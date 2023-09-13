@@ -199,7 +199,7 @@
     </style>
   </head>
   <body>
-    <div class="testbox">
+  <div class="testbox">
       <form action="/">
         <div class="banner">
           <img src="{% static 'curriculo.png' %}" alt="Logo do Site de Empregos">
@@ -213,45 +213,7 @@
           <label for="email">E- mail <span>*</span></label>
           <input id="email" type="email" name="email" required/>
         </div>
-        <div class="item">
-          <label for="address">Endereço<span>*</span></label>
-          <input id="address" type="address" name="address" required/>
-        </div>
-        <div class="item">
-          <label for="city">Cidade<span>*</span></label>
-          <input id="city" type="text" name="city" required/>
-        </div>
-        <div class="item">
-          <label for="state">Estato<span>*</span></label>
-          <input id="state" type="text" name="state" required/>
-        </div>
-        <div class="item">
-          <label for="zip">CEP<span>*</span></label>
-          <input id="zip" type="text" name="zip" required/>
-        </div>
-        <div class="item">
-          <label for="phone">Telefone<span>*</span></label>
-          <input id="phone" type="number" name="phone" required/>
-        </div>
-        <div class="item">
-          <label for="bdate">Date de Nascimento<span>*</span></label>
-          <input id="bdate" type="date" name="bdate" required/>
-          <i class="fas fa-calendar-alt"></i>
-        </div>
-        <div class="question">
-          <label>Genêro</label>
-          <div class="question-answer">
-            <div>
-              <input type="radio" value="none" id="radio_1" name="gender"/>
-              <label for="radio_1" class="radio"><span>Masculino</span></label>
-            </div>
-            <div>
-              <input  type="radio" value="none" id="radio_2" name="gender"/>
-              <label for="radio_2" class="radio"><span>Feminino</span></label>
-            </div>
-          </div>
-        </div>
-        <div class="item">
+          <div class="item">
           <p>Disponibilidade</p>
           <select>
             <option selected value="" disabled selected></option>
@@ -261,10 +223,11 @@
             <option value="undergraduate">Estágio</option>
           </select>
         </div>
-<div class="item">
+          <div class="item">
     <label for="cv">Currículo em PDF </label>
     <input type="file" id="cv" name="cv" accept=".pdf" />
     <small>Selecione um arquivo PDF com seu currículo, se desejar.</small>
+          </div>
 </div>
           </div>
         </div>
