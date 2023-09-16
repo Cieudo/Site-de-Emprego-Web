@@ -1,9 +1,12 @@
 from django.db import models
 
-# Create your models here.
-class Candidato(models.Model):
-    id_canditato = models.AutoField(primary_key=True)
-    nome = models.CharField(max_length=255,null=False)
-    email = models.EmailField(max_length=255)
-    disponibilidade = models.CharField(max_length=10)
-    pdf = models.BinaryField(max_length=16777216)
+
+class Vaga(models.Model):
+    titulo = models.CharField(max_length=100)
+    descricao = models.TextField()
+    empresa = models.CharField(max_length=100)
+
+    # Outros campos relevantes (localização, categoria, etc.)
+
+    def __str__(self):
+        return self.titulo

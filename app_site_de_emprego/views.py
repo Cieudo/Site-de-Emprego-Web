@@ -1,33 +1,38 @@
-from django.shortcuts import render
-from .models import Candidato
+from django.shortcuts import render, redirect
+from .forms import VagaForm
+from .models import Vaga
+
 
 def home(request):
-    return render(request,'home.html')
+    return render(request, 'home.html')
+
+def home(request):
+    vagas = Vaga.objects.all()  # Recupera todas as vagas cadastradas
+    return render(request, 'home.html', {'vagas': vagas})
 
 def loginuser(request):
-    return render(request,'loginuser.html')
+    return render(request, 'loginuser.html')
 
 def register(request):
-    return render(request,'register.html')
-    
-def postregister(request):
-    if request.method =="POST":
-        novo_candidato = Candidato()    
-        novo_candidato.nome = request.POST.get('nome')
-        novo_candidato.email = request.POST.get('email')
-        novo_candidato.disponibilidade = request.POST.get('horarios') 
-        novo_candidato.pdf = request.FILES.get('cv').read()
-        novo_candidato.save()
-
-        views.home(request)
-    
-    candidatos = {
-        'candidados' : Candidato.object.all()
-    }
-    return render(request,'register.html')    
+    return render(request, 'register.html')
 
 def registerempresa(request):
-    return render(request,'registerempresa.html')
+    return render(request, 'registerempresa.html')
 
-def ladingpage(request):
-    return render(request,'ladingpage.html')
+
+def cadastrar_vaga(request):
+    if request.method == 'POST':
+        form = VagaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redireciona para a página inicial
+    else:
+        form = VagaForm()
+
+    return render(request, 'cadastrar_vaga.html', {'form': form})
+
+def pagina_sucesso(request):
+    return redirect('home')
+
+def escolha(request):
+    return render(request,'escolha.html')

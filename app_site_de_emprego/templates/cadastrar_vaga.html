@@ -1,0 +1,51 @@
+{% load static %}
+
+<style>
+    /* Estilos para o formulário */
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button[type="submit"] {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    /* Estilos para a mensagem de sucesso */
+    .success-message {
+        text-align: center;
+        color: #008000;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+</style>
+
+{% block content %}
+    <h2>Cadastrar Vaga</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+    {% if request.method == 'POST' and form.is_valid %}
+    <p class="success-message">A vaga foi cadastrada com sucesso!</p>
+    {% endif %}
+{% endblock %}
