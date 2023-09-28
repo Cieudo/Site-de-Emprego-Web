@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Reset de Estilos */
+    body, h1, h2, h3, p, figure, blockquote, dl, dd, ul, ol, li, pre, hr, fieldset, legend, th, td {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      box-sizing: border-box; /* Adicionado para garantir a consistência do box model */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input, textarea {
+      width: calc(100% - 16px);
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <title>Formulário de Inscrição</title>
+</head>
+<body>
+
+  <form>
+    <label for="cep">CEP:</label>
+    <input type="text" id="cep" name="cep" required>
+
+    <label for="escolaridade">Escolaridade:</label>
+    <input type="text" id="escolaridade" name="escolaridade" required>
+
+    <label for="celular">Celular:</label>
+    <input type="tel" id="celular" name="celular" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <hr>
+
+    <h2>Formulário do Candidato (Questões de Perfil)</h2>
+
+    <label for="disponibilidade">1. Qual a sua disponibilidade de horários?</label>
+    <textarea id="disponibilidade" name="disponibilidade" required></textarea>
+
+    <label for="sonho">2. Qual o seu maior sonho?</label>
+    <textarea id="sonho" name="sonho" required></textarea>
+
+    <!-- Adicione as outras perguntas aqui... -->
+
+    <button type="submit">Enviar</button>
+  </form>
+
+</body>
+</html>

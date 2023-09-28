@@ -1,0 +1,11 @@
+<!-- Modal de Confirmação de Exclusão -->
+<div id="confirmarExclusaoModal" class="modal">
+    <div class="modal-content">
+        <h2>Tem certeza de que deseja excluir esta vaga?</h2>
+        <form method="post" id="confirmarExclusaoForm">
+            {% csrf_token %}
+            <button type="submit" class="confirmar-btn">Confirmar Exclusão</button>
+            <button type="button" class="cancelar-btn" onclick="cancelarExclusao()">Cancelar Exclusão</button>
+        </form>
+    </div>
+</div>
