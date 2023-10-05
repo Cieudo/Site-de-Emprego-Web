@@ -11,4 +11,8 @@ urlpatterns = [
     path('excluir_vaga/<int:vaga_id>/', views.excluir_vaga, name='excluir_vaga'),
     path('formulario/', views.formulario_inscricao, name='formulario_inscricao'),
     path('pagina_sucesso/', views.pagina_sucesso, name='pagina_sucesso'),
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('empresa/', views.empresa_panel, name='empresa_panel'),
+    path('candidato/', views.candidato_panel, name='candidato_panel'),
+    path('login/', views.login, name='login'),
 ]

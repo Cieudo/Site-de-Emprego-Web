@@ -1,0 +1,122 @@
+<!--
+
+<html>
+
+    <head>
+      
+
+
+    </head>
+
+
+    <body>
+
+      <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+        <input type="text" placeholder="Username" name="username">
+        <br>
+        <input type="password" placeholder="Senha" name="senha">
+        <br>
+        <input type="submit"value="Logar">
+        <br>
+      </form>
+
+
+
+
+
+    </body>
+
+
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- Inclua o link para a biblioteca FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-pz/Z9bFOpE9lD6J7dCqz5BE8RNjbhPh0vWxUGYSLwxtfLLq5fYTkj5ZxZ1Tx6S7Vsg3f0rOL1jFX7vc7Xulz2Ew==" crossorigin="anonymous" />
+
+    <style>
+        html, body {
+            display: flex;
+            justify-content: center;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        form {
+            border: 5px solid #f1f1f1;
+        }
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 26px 18px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF; /* Altere esta cor para azul */
+            color: white;
+            padding: 14px 0;
+            margin: 10px 0;
+            border: none;
+            cursor: grabbing;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .formcontainer {
+            text-align: left;
+            margin: 24px 50px 12px;
+        }
+
+        .container {
+            padding: 16px 0;
+            text-align: left;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 0;
+            padding-right: 15px;
+        }
+
+        /* Change styles for span on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+        <h1><i class="fas fa-user"></i> Login</h1>
+        <div class="formcontainer">
+            <hr/>
+            <div class="container">
+                <label for="uname"><strong>Usuário</strong></label>
+                <input type="text" placeholder="Informe Seu Usuario" name="username" required>
+                <label for="psw"><strong>Senha</strong></label>
+                <input type="password" placeholder="Informe Sua Senha" name="senha" required>
+            </div>
+            <button type="submit">Login <i class="fas fa-sign-in-alt"></i></button>
+        </div>
+    </form>
+</body>
+</html>
