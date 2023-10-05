@@ -15,6 +15,8 @@ def home(request):
     vagas = Vaga.objects.all()  # Recupera todas as vagas cadastradas
     return render(request, 'home.html', {'vagas': vagas})
 
+
+
 def cadastro(request):
     if request.method == "GET":
         return render(request, 'cadastro.html')
@@ -34,6 +36,7 @@ def cadastro(request):
         messages.success(request, 'Cadastro realizado com sucesso!')
         return redirect('home')
 
+
 def login(request):
     if  request.method == "GET":
         return render(request, 'login.html')
@@ -45,19 +48,20 @@ def login(request):
           user = authenticate(username=username, password=senha)
 
           if user:
-               return HttpResponse('autenticado')
+               return redirect('home')
           else:
-                return HttpResponse('Email ou senha invalidos')
+                 return messages(request, 'login.html', {'error_message': 'Email ou senha inválidos'})
 
 
 def loginuser(request):
     return render(request, 'loginuser.html')
 
-def register(request):
-    return render(request, 'register.html')
+def curriculo(request):
+    return render(request, 'curriculo.html')
 
 def registerempresa(request):
     return render(request, 'registerempresa.html')
+
 
 def formulario_inscricao(request):
     return render(request, 'formulario_inscricao.html')
@@ -95,4 +99,3 @@ def excluir_vaga(request, vaga_id):
     
     return render(request, 'confirmar_exclusao.html', {'vaga': vaga})
 
-    

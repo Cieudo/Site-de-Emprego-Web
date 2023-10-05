@@ -34,11 +34,13 @@
         </nav>
         <section class="login-section">
             {% if user.is_authenticated %}
-                <p>Bem-vindo, {{ user.username }}!</p>
+                <a href="/curriculo" class="login-button">Envie seu Curriculo</a>
             {% else %}
                 <a href="/cadastrar_vaga" class="login-button">cadastre uma vaga</a>
                 <a href="/escolha" class="signup-button">Cadastre-se</a>
                 <a href="/formulario" class="signup-button">Inscreva-se</a>
+                <a href="/login" class="signup-button">Login</a>
+                <a href="/curriculo" class="login-button">Envie seu Curriculo</a>
             {% endif %}
         </section>
     </header>
