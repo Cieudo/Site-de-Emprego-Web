@@ -1,12 +1,15 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
 from app_site_de_emprego import views
 
 urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
+    path("contas/", include("django.contrib.auth.urls")),
     path('loginusers/', views.loginuser, name='loginuser'),
     path('login/', views.login, name='login'),
+    path('login_view/', views.login_view, name='login_view'),
     path('curriculo/', views.curriculo, name='curriculo'),
     path('registerempresa/', views.registerempresa, name='registerempresa'),
     path('escolha/', views.escolha, name='escolha'),

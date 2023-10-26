@@ -3,14 +3,8 @@
 <html>
 
     <head>
-      
-
-
     </head>
-
-
     <body>
-
       <form action="{% url 'login' %}" method="POST">{% csrf_token %}
         <input type="text" placeholder="Username" name="username">
         <br>
@@ -19,15 +13,7 @@
         <input type="submit"value="Logar">
         <br>
       </form>
-
-
-
-
-
     </body>
-
-
-
 </html> -->
 
 
@@ -105,7 +91,7 @@
     </style>
 </head>
 <body>
-    <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+    <form action="{% url 'login_view' %}" method="POST">{% csrf_token %}
         <h1><i class="fas fa-user"></i> Login</h1>
         <div class="formcontainer">
             <hr/>
