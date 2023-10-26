@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
   <head>
@@ -162,3 +163,156 @@
         <div class="item">
           <p>Monthly Rent and Utilities</p>
           <input type="text"
+=======
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulário de Inscrição</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+      html, body {
+        min-height: 100%;
+      }
+      body, div, form, input, textarea, p { 
+        padding: 0;
+        margin: 0;
+        outline: none;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 14px;
+        color: #666;
+        line-height: 22px;
+      }
+      h1 {
+        position: absolute;
+        margin: 0;
+        font-size: 32px;
+        color: #fff;
+        z-index: 2;
+      }
+      .testbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: inherit;
+        padding: 20px;
+      }
+      form {
+        width: 100%;
+        padding: 20px;
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 0 10px 0 #cc0052;
+        border: 1px solid #ffcc00; /* Cor da borda amarela */
+      }
+      .banner {
+        position: relative;
+        height: 210px;
+        background-image: url("/uploads/media/default/0001/01/f1cf9a9068f4bfbdbd9758c45db79203579a3561.jpeg");
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .banner::after {
+        content: "";
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      input, textarea {
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      input {
+        width: calc(100% - 10px);
+        padding: 5px;
+      }
+      textarea {
+        width: calc(100% - 12px);
+        padding: 5px;
+      }
+      .item:hover p, input:hover::placeholder {
+        color: #cc0052;
+      }
+      .item input:hover, .item textarea:hover {
+        border: 1px solid transparent;
+        box-shadow: 0 0 6px 0 #cc0052;
+        color: #cc0052;
+      }
+      .item {
+        position: relative;
+        margin: 10px 0;
+      }
+      .btn-block {
+        margin-top: 10px;
+        text-align: center;
+      }
+      button {
+        width: 150px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px; 
+        background: #0077cc;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #0055aa;
+      }
+      @media (min-width: 568px) {
+        .name-item, .contact-item {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+        .contact-item .item {
+          width: calc(50% - 8px);
+        }
+        .name-item input {
+          width: calc(50% - 20px);
+        }
+        .contact-item input {
+          width: calc(100% - 12px);
+        }
+      }
+    </style>
+  </head>
+  {% block content %}
+  <body>
+    <div class="container">
+      <div class="banner">
+        <h1>Formulário de Inscrição (Questões de Perfil)</h1>
+      </div>
+      <form method="post">
+        {% csrf_token %}        
+        <label for="{{ form.p1.id_for_label }}"><i class="far fa-comment fa-icon"></i> 1. Qual a sua disponibilidade de horários?</label> 
+        {{ form.p1 }}       
+        <label for="{{ form.p2.id_for_label }}"><i class="far fa-comment fa-icon"></i> 2. Qual o seu maior sonho?</label> 
+        {{ form.p2 }}       
+        <label for="{{ form.p3.id_for_label }}"><i class="far fa-comment fa-icon"></i> 3. Quais os seus objetivos para o futuro e o que tem feito para alcançá-los?</label> 
+        {{ form.p3 }}       
+        <label for="{{ form.p4.id_for_label }}"><i class="far fa-comment fa-icon"></i> 4. Por favor, nos conte o maior feito da sua vida até agora, algo que conseguiu e se orgulha muito?</label> 
+        {{ form.p4 }}       
+        <label for="{{ form.p5.id_for_label }}"><i class="far fa-comment fa-icon"></i> 5. Faça uma breve análise pessoal e nos conte pontos que precisa melhorar em seu comportamento?</label> 
+        {{ form.p5 }}       
+        <label for="{{ form.p6.id_for_label }}"><i class="far fa-comment fa-icon"></i> 6. O que mais valoriza em uma empresa?</label> 
+        {{ form.p6 }}       
+        <label for="{{ form.p7.id_for_label }}"><i class="far fa-comment fa-icon"></i> 7. O que não tolera no ambiente de trabalho?</label> 
+        {{ form.p7 }}       
+        <label for="{{ form.p8.id_for_label }}"><i class="far fa-comment fa-icon"></i> 8. Como pretende estar daqui a 5 anos?</label> 
+        {{ form.p8 }}       
+        <label for="{{ form.p9.id_for_label }}"><i class="far fa-comment fa-icon"></i> 9. Nos conte alguma sistuação difícil que já passou e como lidou com ela?</label> 
+        {{ form.p9 }}       
+        <label for="{{ form.p10.id_for_label }}"><i class="far fa-comment fa-icon"></i>10. Porque a empresa deve contratar você?</label> 
+        {{ form.p10 }}       
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </body>
+  {% endblock %}
+>>>>>>> main

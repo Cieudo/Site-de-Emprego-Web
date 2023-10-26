@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import VagaForm
+from .forms import (VagaForm,CandidatoForm)
 from .models import Vaga
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
@@ -67,7 +67,14 @@ def registerempresa(request):
 
 
 def formulario_inscricao(request):
-    return render(request, 'formulario_inscricao.html')
+    if request.method == 'POST':
+        form = CandidatoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redireciona para a página inicial
+    else:
+        form = CandidatoForm()
+    return render(request, 'formulario_inscricao.html', {'form': form})
 
 @login_required
 def candidato_panel(request):
