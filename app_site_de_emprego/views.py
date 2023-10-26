@@ -5,15 +5,21 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 
 
 def home(request):
     return render(request, 'home.html')
 
 def home(request):
+    return render(request, 'home.html', {'user': request.user})
+
+def home(request):
     vagas = Vaga.objects.all()  # Recupera todas as vagas cadastradas
     return render(request, 'home.html', {'vagas': vagas})
+
 
 def cadastro(request):
     if request.method == "GET":
@@ -34,30 +40,31 @@ def cadastro(request):
         messages.success(request, 'Cadastro realizado com sucesso!')
         return redirect('home')
 
-def login(request):
-    if  request.method == "GET":
-        return render(request, 'login.html')
 
-    else:
-          username = request.POST.get('username')
-          senha = request.POST.get('senha')
-
-          user = authenticate(username=username, password=senha)
-
-          if user:
-               return HttpResponse('autenticado')
-          else:
-                return HttpResponse('Email ou senha invalidos')
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # 'home' deve ser o nome da URL da página inicial
+        else:
+            # Handle login falhou
+            pass
+    return render(request, 'login.html')
 
 
 def loginuser(request):
     return render(request, 'loginuser.html')
 
-def register(request):
-    return render(request, 'register.html')
+def curriculo(request):
+    return render(request, 'curriculo.html')
+
 
 def registerempresa(request):
     return render(request, 'registerempresa.html')
+
 
 def formulario_inscricao(request):
     if request.method == 'POST':
@@ -69,11 +76,20 @@ def formulario_inscricao(request):
         form = CandidatoForm()
     return render(request, 'formulario_inscricao.html', {'form': form})
 
+@login_required
 def candidato_panel(request):
+    # Adicione a lógica para exibir as vagas para onde o candidato mandou currículo
     return render(request, 'candidato_panel.html')
 
+@login_required
 def empresa_panel(request):
-    return render(request, 'empresa_panel.html')
+    if request.user.profile.tipo == 'empresa':
+        # Adicione a lógica para exibir as vagas criadas pela empresa
+        vagas = Vaga.objects.filter(empresa=request.user)
+        return render(request, 'empresa_panel.html', {'vagas': vagas})
+    else:
+        # Caso o usuário não seja uma empresa, redirecione para a home
+        return redirect('home')
 
 
 def cadastrar_vaga(request):
@@ -93,13 +109,14 @@ def pagina_sucesso(request):
 def escolha(request):
     return render(request,'escolha.html')
 
+@login_required
 def excluir_vaga(request, vaga_id):
-    vaga = get_object_or_404(Vaga, id=vaga_id)
+    vaga = get_object_or_404(Vaga, id=vaga_id, empresa=request.user)
     
     if request.method == 'POST':
         vaga.delete()
-        return redirect('home')  # Redirecione para a página inicial ou qualquer outra página após a exclusão
+        messages.success(request, 'Vaga excluída com sucesso!')
+        return redirect('empresa_panel')
     
     return render(request, 'confirmar_exclusao.html', {'vaga': vaga})
 
-    

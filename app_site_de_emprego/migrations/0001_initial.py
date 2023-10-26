@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('titulo', models.CharField(max_length=100)),
                 ('descricao', models.TextField()),
                 ('empresa', models.CharField(max_length=100)),
+                ('localidade', models.CharField(max_length=100)),
             ],
         ),
     ]

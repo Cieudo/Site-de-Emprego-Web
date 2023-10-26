@@ -21,7 +21,21 @@
         </section>
     </header>
 
-    <!-- Conteúdo específico para o painel da empresa -->
+    <section class="vagas-empresa">
+        <h2>Minhas Vagas</h2>
+        {% if request.user.empresa %}
+            {% for vaga in request.user.empresa.vaga_set.all %}
+                <div class="vaga-card">
+                    <h3>{{ vaga.titulo }}</h3>
+                    <p>Descrição: {{ vaga.descricao }}</p>
+                    <p>Localidade: {{ vaga.localidade }}</p>
+                    <!-- Outros detalhes da vaga -->
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>A empresa não possui vagas cadastradas.</p>
+        {% endif %}
+    </section>
 
 </body>
 </html>
