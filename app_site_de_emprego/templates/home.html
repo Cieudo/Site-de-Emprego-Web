@@ -35,7 +35,7 @@
         <section class="login-section">
             {% if user.is_authenticated %}
                 <p>Bem-vindo, {{ user.username }}!</p>
-                <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+                <a href="{% url 'home' %}" class="logout-button">Logout</a>
                 {% if user.is_candidate %}
                     <a href="{% url 'candidate_panel' %}" class="user-panel-button">Painel do Candidato</a>
                 {% elif user.is_employer %}
