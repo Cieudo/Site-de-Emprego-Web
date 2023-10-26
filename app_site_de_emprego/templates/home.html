@@ -28,7 +28,7 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href=" "><img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos"></a>
+                <a href="{% url 'home' %}"><img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos"></a>
                 <h1>Encontre o Emprego dos seus Sonhos</h1>
             </div>
         </nav>
@@ -42,10 +42,10 @@
                     <a href="{% url 'employer_panel' %}" class="user-panel-button">Painel do Empresário</a>
                 {% endif %}
             {% else %}
-                <a href="/cadastrar_vaga" class="login-button">Cadastre uma Vaga</a>
-                <a href="/escolha" class="signup-button">Cadastre-se</a>
-                <a href="/formulario" class="signup-button">Inscreva-se</a>
-                <a href="/login" class="signup-button">Log in</a>
+                <a href="{% url 'cadastrar_vaga' %}" class="login-button">Cadastre uma Vaga</a>
+                <a href="{% url 'escolha' %}" class="signup-button">Cadastre-se</a>
+                <a href="{% url 'formulario_inscricao' %}" class="signup-button">Inscreva-se</a>
+                <a href="{% url 'login' %}" class="signup-button">Log in</a>
             {% endif %}
         </section>
     </header>

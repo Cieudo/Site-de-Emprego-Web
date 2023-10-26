@@ -8,18 +8,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-
-
-def home(request):
-    return render(request, 'home.html')
-
-def home(request):
-    return render(request, 'home.html', {'user': request.user})
-
 def home(request):
     vagas = Vaga.objects.all()  # Recupera todas as vagas cadastradas
-    return render(request, 'home.html', {'vagas': vagas})
-
+    return render(request, 'home.html', {'vagas': vagas,'user': request.user})
 
 def cadastro(request):
     if request.method == "GET":
