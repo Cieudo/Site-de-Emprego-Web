@@ -202,7 +202,7 @@
   </head>
   <body>
     <div class="testbox">
-      <form action="/">
+      <form method="post" action="{% url 'registerempresa' %}">
         <p>Preencha com as informações para Cadastrar sua Empresa </p>
         <div class="colums">
           <div class="item">
@@ -215,7 +215,7 @@
           </div>
             <div class="item">
             <label for="state"> Estado<span>*</span></label>
-            <input id="state" type="text" name="state" required/>
+            <input id="state" type="text" name="nomeempresa" required/>
           </div>
             <div class="item">
             <label for="city"> Cidade<span>*</span></label>

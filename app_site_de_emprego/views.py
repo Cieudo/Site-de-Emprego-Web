@@ -21,6 +21,10 @@ def home(request):
     return render(request, 'home.html', {'vagas': vagas})
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> caee3d20d1a468baff122ba18c04a3defc8774b0
 def cadastro(request):
     if request.method == "GET":
         return render(request, 'cadastro.html')
@@ -40,6 +44,23 @@ def cadastro(request):
         messages.success(request, 'Cadastro realizado com sucesso!')
         return redirect('home')
 
+<<<<<<< HEAD
+
+def login(request):
+    if  request.method == "GET":
+        return render(request, 'login.html')
+
+    else:
+          username = request.POST.get('username')
+          senha = request.POST.get('senha')
+
+          user = authenticate(username=username, password=senha)
+
+          if user:
+               return redirect('home')
+          else:
+                 return messages(request, 'login.html', {'error_message': 'Email ou senha inválidos'})
+=======
 
 def login_view(request):
     if request.method == 'POST':
@@ -53,6 +74,7 @@ def login_view(request):
             # Handle login falhou
             pass
     return render(request, 'login.html')
+>>>>>>> caee3d20d1a468baff122ba18c04a3defc8774b0
 
 
 def loginuser(request):
@@ -60,7 +82,10 @@ def loginuser(request):
 
 def curriculo(request):
     return render(request, 'curriculo.html')
+<<<<<<< HEAD
+=======
 
+>>>>>>> caee3d20d1a468baff122ba18c04a3defc8774b0
 
 def registerempresa(request):
     return render(request, 'registerempresa.html')

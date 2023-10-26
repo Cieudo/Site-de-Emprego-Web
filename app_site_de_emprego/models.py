@@ -1,5 +1,20 @@
 from django.db import models
 
+<<<<<<< HEAD
+
+class Vaga(models.Model):
+    titulo = models.CharField(max_length=100)
+    descricao = models.TextField()
+    empresa = models.CharField(max_length=100)
+    localidade = models.CharField(max_length=100)
+
+    # Outros campos relevantes (localização, categoria, etc.)
+
+    def __str__(self):
+       return self.titulo 
+
+=======
+>>>>>>> caee3d20d1a468baff122ba18c04a3defc8774b0
 class Empresa(models.Model):
     id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=100)
