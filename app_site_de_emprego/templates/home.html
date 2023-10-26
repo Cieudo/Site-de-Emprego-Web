@@ -34,13 +34,27 @@
         </nav>
         <section class="login-section">
             {% if user.is_authenticated %}
+<<<<<<< HEAD
                 <a href="/curriculo" class="login-button">Envie seu Curriculo</a>
+=======
+                <p>Bem-vindo, {{ user.username }}!</p>
+                <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+                {% if user.is_candidate %}
+                    <a href="{% url 'candidate_panel' %}" class="user-panel-button">Painel do Candidato</a>
+                {% elif user.is_employer %}
+                    <a href="{% url 'employer_panel' %}" class="user-panel-button">Painel do Empresário</a>
+                {% endif %}
+>>>>>>> caee3d20d1a468baff122ba18c04a3defc8774b0
             {% else %}
-                <a href="/cadastrar_vaga" class="login-button">cadastre uma vaga</a>
+                <a href="/cadastrar_vaga" class="login-button">Cadastre uma Vaga</a>
                 <a href="/escolha" class="signup-button">Cadastre-se</a>
                 <a href="/formulario" class="signup-button">Inscreva-se</a>
+<<<<<<< HEAD
                 <a href="/login" class="signup-button">Login</a>
                 <a href="/curriculo" class="login-button">Envie seu Curriculo</a>
+=======
+                <a href="/login" class="signup-button">Log in</a>
+>>>>>>> caee3d20d1a468baff122ba18c04a3defc8774b0
             {% endif %}
         </section>
     </header>
@@ -60,9 +74,11 @@
             <p>Empresa: {{ vaga.empresa }}</p>
             <p>{{ vaga.descricao }}</p>
         </div>
-        <div class="button-container">
-<button class="detalhes-button" onclick="mostrarDetalhes('{{ vaga.titulo }}', '{{ vaga.empresa }}', '{{ vaga.descricao }}')">Mais Detalhes</button>
+        <div class="button-container">    
+        <button class="detalhes-button" onclick="mostrarDetalhes('{{ vaga.titulo }}', '{{ vaga.empresa }}', '{{ vaga.descricao }}')">Mais Detalhes</button>
+            {% if user.is_authenticated %}
             <a href="{% url 'excluir_vaga' vaga.id %}" class="ml-2">Excluir Vaga</a>
+            {% endif %}
         </div>
     </div>
     {% endfor %}
