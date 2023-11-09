@@ -5,8 +5,9 @@ from app_site_de_emprego import views
 urlpatterns = [
     path('', views.home, name='home'), # URL raiz correspondendo à função home
     path('admin/', admin.site.urls), # URL para a função loginuser com "s"
-    path('loginusers/', views.loginuser, name='loginuser'),
-    path('login/', views.login, name='login'),
+    #path('loginusers/', views.loginuser, name='loginuser'),
+    path('login/', views.login_user, name='login_user'),
+    path('logout/',views.logout_user,name='logout_user'),
     path('curriculo/', views.curriculo, name='curriculo'),
     path('registerempresa/', views.registerempresa, name='registerempresa'),
     path('escolha/', views.escolha, name='escolha'),

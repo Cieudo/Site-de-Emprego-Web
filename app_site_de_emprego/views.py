@@ -17,8 +17,8 @@ def home(request):
     vagas = Vaga.objects.all()  # Recupera todas as vagas cadastradas
     return render(request, 'home.html', {'vagas': vagas})
 
-def loginuser(request):
-    return render(request, 'loginuser.html')
+#def loginuser(request):
+#    return render(request, 'loginuser.html')
 
 def register(request):
     return render(request, 'register.html')
