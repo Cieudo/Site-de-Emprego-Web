@@ -26,6 +26,9 @@ def register(request):
 def registerempresa(request):
     return render(request, 'registerempresa.html')
 
+def curriculo(request):
+    return render(request, 'curriculo.html')
+
 def escolha(request):
     return render(request,'escolha.html')
 
