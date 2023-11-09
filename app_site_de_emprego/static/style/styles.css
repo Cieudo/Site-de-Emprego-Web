@@ -78,7 +78,8 @@ header p {
     margin-bottom: 20px;
     width: calc(50% - 20px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box; /* Adicione esta linha para corrigir o tamanho dos elementos */
+    box-sizing: border-box;
+    /* Adicione esta linha para corrigir o tamanho dos elementos */
 }
 
 .job-card h3 {
@@ -103,6 +104,7 @@ header p {
 .job-card a:hover {
     background-color: #0056b3;
 }
+
 footer {
     background-color: #333;
     color: #fff;
@@ -132,4 +134,3 @@ footer a {
     text-decoration: none;
     font-size: 24px;
 }
-

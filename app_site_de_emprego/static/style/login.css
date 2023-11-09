@@ -1,5 +1,5 @@
-
-html, body {
+html,
+body {
     display: flex;
     justify-content: center;
     font-family: Roboto, Arial, sans-serif;
@@ -10,7 +10,8 @@ form {
     border: 5px solid #f1f1f1;
 }
 
-input[type=text], input[type=password] {
+input[type=text],
+input[type=password] {
     width: 100%;
     padding: 26px 18px;
     margin: 8px 0;
@@ -20,7 +21,8 @@ input[type=text], input[type=password] {
 }
 
 button {
-    background-color: #007BFF; /* Altere esta cor para azul */
+    background-color: #007BFF;
+    /* Altere esta cor para azul */
     color: white;
     padding: 14px 0;
     margin: 10px 0;
