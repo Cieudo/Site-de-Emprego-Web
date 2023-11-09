@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -120,8 +121,9 @@
   <body>
     <div class="container">
       <div class="banner">
-        <h1>Formulário de Inscrição (Questões de Perfil)</h1>
+        <img src="{% static 'form.png' %}" alt="Logo do Site de Empregos">
       </div>
+      <p>Formulário de Inscrição (Questões de Perfil)</p>
       <form method="post">
         {% csrf_token %}        
         <label for="{{ form.p1.id_for_label }}"><i class="far fa-comment fa-icon"></i> 1. Qual a sua disponibilidade de horários?</label> 

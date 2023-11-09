@@ -3,8 +3,8 @@ from django.urls import path
 from app_site_de_emprego import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('admin/', admin.site.urls),
+    path('', views.home, name='home'), # URL raiz correspondendo à função home
+    path('admin/', admin.site.urls), # URL para a função loginuser com "s"
     path('loginusers/', views.loginuser, name='loginuser'),
     path('login/', views.login, name='login'),
     path('curriculo/', views.curriculo, name='curriculo'),

@@ -28,24 +28,17 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="{% url 'home' %}"><img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos"></a>
+                <a href=" "><img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos"></a>
                 <h1>Encontre o Emprego dos seus Sonhos</h1>
             </div>
         </nav>
         <section class="login-section">
-            {% if user.is_authenticated %}
-                <p>Bem-vindo, {{ user.username }}!</p>
-                <a href="{% url 'logout' %}" class="logout-button">Logout</a>
-                {% if user.is_candidate %}
-                    <a href="{% url 'candidate_panel' %}" class="user-panel-button">Painel do Candidato</a>
-                {% elif user.is_employer %}
-                    <a href="{% url 'employer_panel' %}" class="user-panel-button">Painel do Empresário</a>
-                {% endif %}
+            {% if request.user.is_authenticated %}
+                <a href="/cadastrar_vaga" class="signup-button">Cadastre sua Vaga</a>
+                <a href="/logout" class="signup-button">Sair</a>
             {% else %}
-                <a href="{% url 'cadastrar_vaga' %}" class="login-button">Cadastre uma Vaga</a>
-                <a href="{% url 'escolha' %}" class="signup-button">Cadastre-se</a>
-                <a href="{% url 'formulario_inscricao' %}" class="signup-button">Inscreva-se</a>
-                <a href="{% url 'login' %}" class="signup-button">Log in</a>
+                <a href="/escolha" class="signup-button">Cadastre-se</a>
+                <a href="/login" class="signup-button">Login</a>
             {% endif %}
         </section>
     </header>
@@ -65,8 +58,8 @@
             <p>Empresa: {{ vaga.empresa }}</p>
             <p>{{ vaga.descricao }}</p>
         </div>
-        <div class="button-container">    
-        <button class="detalhes-button" onclick="mostrarDetalhes('{{ vaga.titulo }}', '{{ vaga.empresa }}', '{{ vaga.descricao }}')">Mais Detalhes</button>
+        <div class="button-container">
+<button class="detalhes-button" onclick="mostrarDetalhes('{{ vaga.titulo }}', '{{ vaga.empresa }}', '{{ vaga.descricao }}')">Mais Detalhes</button>
             {% if user.is_authenticated %}
             <a href="{% url 'excluir_vaga' vaga.id %}" class="ml-2">Excluir Vaga</a>
             {% endif %}

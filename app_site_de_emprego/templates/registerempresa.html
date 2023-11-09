@@ -94,7 +94,7 @@
       }
       .week {
       display:flex;
-      justify-content:space-between;
+      justfiy-content:space-between;
       }
       .colums {
       display:flex;
@@ -202,20 +202,20 @@
   </head>
   <body>
     <div class="testbox">
-      <form method="post" action="{% url 'registerempresa' %}">
+      <form action="/">
         <p>Preencha com as informações para Cadastrar sua Empresa </p>
         <div class="colums">
           <div class="item">
             <label for="fname"> Nome da Empresa<span>*</span></label>
             <input id="fname" type="text" name="fname" required/>
-          </div>          
+          </div>
             <div class="item">
             <label for="street"> Endereço<span>*</span></label>
             <input id="street" type="text" name="street" required/>
           </div>
             <div class="item">
             <label for="state"> Estado<span>*</span></label>
-            <input id="state" type="text" name="nomeempresa" required/>
+            <input id="state" type="text" name="state" required/>
           </div>
             <div class="item">
             <label for="city"> Cidade<span>*</span></label>
@@ -253,7 +253,7 @@
         <input type="checkbox" name="checkbox1">
         <label>Você concorda em receber nossas comunicações eletronicamente. Entraremos em contato com você por e-mail ou telefone. Você concorda que todos os acordos, avisos, divulgações e outras comunicações que fornecemos a você eletronicamente satisfazem qualquer requisito legal de que tais comunicações sejam feitas por escrito.</label>
         <div class="btn-block">
-          <button type="submit" href="{% url 'home' %}">Enviar</button>
+          <button type="submit" href="/">Enviar</button>
         </div>
       </form>
     </div>
