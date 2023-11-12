@@ -17,4 +17,6 @@ urlpatterns = [
     path('candidato/', views.candidato_panel, name='candidato_panel'),
     path('empresa/', views.empresa_panel, name='empresa_panel'),
     path('cadastro/', views.cadastro, name='cadastro'),
+    path('relatorio/candidatos/', views.relatorio_candidatos, name='relatorio_candidatos'),
+    path('relatorio/ofertas/', views.relatorio_ofertas, name='relatorio_ofertas'),
 ]

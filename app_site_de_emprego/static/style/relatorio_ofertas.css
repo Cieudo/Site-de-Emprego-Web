@@ -1,0 +1,33 @@
+/*Os três abaixo são para o relatorio de ofertas, não sei pq não utilizar homestyle.css, mas nada impede
+em caso disso ocorrer, mudar no relatorio_ofertas.html a fonte de estilo
+*/
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.relatorios-section {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.relatorios-button:hover {
+    background-color: #0056b3;
+}
+
+.relatorios-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Empurra os botões para a direita da navbar */
+}

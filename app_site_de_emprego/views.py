@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import login as auth_login
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 
@@ -16,9 +16,6 @@ from django.shortcuts import redirect
 def home(request):
     vagas = Vaga.objects.all()  # Recupera todas as vagas cadastradas
     return render(request, 'home.html', {'vagas': vagas})
-
-#def loginuser(request):
-#    return render(request, 'loginuser.html')
 
 def register(request):
     return render(request, 'register.html')
@@ -113,4 +110,23 @@ def excluir_vaga(request, vaga_id):
     
     return render(request, 'confirmar_exclusao.html', {'vaga': vaga})
 
-    
+#Não é boa prática enfiar esse código aqui, mas...
+#Código que verifica se o usuário atual é um superusuário
+#Vai ser utilizado para permitir que o 'admin' veja o relatório de candidatos e ofertas
+def is_superuser(user):
+    return user.is_authenticated and user.is_superuser
+
+# Código que verifica se o usuário atual é um superusuário
+# Vai ser utilizado para permitir que o 'admin' veja o relatório de candidatos e ofertas
+def is_superuser(user):
+    return user.is_authenticated and user.is_superuser
+
+@user_passes_test(is_superuser)
+def relatorio_candidatos(request):
+    candidatos = Candidato.objects.all()
+    return render(request, 'relatorio_candidatos.html', {'candidatos': candidatos})
+
+@user_passes_test(is_superuser)
+def relatorio_ofertas(request):
+    vagas = Vaga.objects.all()
+    return render(request, 'relatorio_ofertas.html', {'vagas': vagas})

@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site de Empregos</title>
-    <link rel="stylesheet" href="{% static 'homestyle.css' %}"> <!-- Substitua 'seu-estilo.css' pelo caminho para seu arquivo CSS -->
+    <link rel="stylesheet" href="{% static 'homestyle.css' %}"> {#<!-- Substitua 'seu-estilo.css' pelo caminho para seu arquivo CSS -->#}
 </head>
 <style>
+
     .detalhes-button {
         background-color: #007BFF;
         color: #fff;
@@ -37,23 +38,31 @@
                 <a href=" "><img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos"></a>
                 <h1>Encontre o Emprego dos seus Sonhos</h1>
             </div>
-        </nav>
-        <section class="login-section">
-            {% if request.user.is_authenticated %}
+                    {% if request.user.is_authenticated %}
+<section class="relatorios-section">
+                {% if user.is_superuser %}
+            <div class="relatorios-container">
+                <a href="{% url 'relatorio_candidatos' %}" class="relatorios-button">Relatório de Candidatos</a>
+                <a href="{% url 'relatorio_ofertas' %}" class="relatorios-button">Relatório de Ofertas</a>
+            </div>
+        {% endif %}
                 <a href="/cadastrar_vaga" class="signup-button">Cadastre sua Vaga</a>
                 <a href="/logout" class="signup-button">Sair</a>
+</section>
             {% else %}
+<section class="login-section">
                 <a href="/cadastro" class="signup-button">Cadastre-se</a>
                 <a href="/login" class="signup-button">Login</a>
-            {% endif %}
-        </section>
+                    </section>
+{% endif %}
+        </nav>
     </header>
     <section class="search-jobs">
         <h2>Encontre Empregos</h2>
         <form action="/pesquisar" method="GET">
             <input type="text" name="cargo" placeholder="Digite o cargo desejado">
             <input type="text" name="localizacao" placeholder="Digite a localização">
-           <!-- <button type="submit">Pesquisar</button> -->
+           {#<!-- <button type="submit">Pesquisar</button> -->#}
         </form>
     </section>
     <section class="featured-jobs">
@@ -74,6 +83,7 @@
     {% endfor %}
 </section>
 
+{# comment  "comment do django" #}
 <!-- <footer>
     <div class="container">
         <div class="row">
@@ -93,9 +103,8 @@
         </div>
     </div>
     <p class="text-center">&copy; 2023 Site de Empregos</p>
-</footer>
-            
-        -->
+</footer>-->
+{# end comment #}
 
     <div id="modalDetalhes" class="modal">
         <div class="modal-content">
