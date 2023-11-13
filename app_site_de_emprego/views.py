@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-
+from django.contrib.auth.models import Group
 
 
 def home(request):
@@ -22,9 +22,6 @@ def register(request):
 
 def registerempresa(request):
     return render(request, 'registerempresa.html')
-
-def curriculo(request):
-    return render(request, 'curriculo.html')
 
 def escolha(request):
     return render(request,'escolha.html')
@@ -109,6 +106,56 @@ def excluir_vaga(request, vaga_id):
         return redirect('home')  # Redirecione para a página inicial ou qualquer outra página após a exclusão
     
     return render(request, 'confirmar_exclusao.html', {'vaga': vaga})
+
+
+def cadastro_empresa(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+
+        user = User.objects.filter(username=username).first()
+
+        if user:
+            return HttpResponse('Já existe um usuário com esse nome de usuário.')
+
+        user = User.objects.create_user(username=username, email=email, password=senha)
+
+        # Adicione o usuário ao grupo Empresa
+        group = Group.objects.get(name='Empresa')
+        user.groups.add(group)
+
+        user.save()
+
+        permission = Permission.objects.get(codename='permission_cadastrar_vaga')
+        group.permissions.add(permission)
+
+        return redirect('home')
+
+    return render(request, 'cadastro_empresa.html')
+
+def cadastro_candidato(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+
+        user = User.objects.filter(username=username).first()
+
+        if user:
+            return HttpResponse('Já existe um usuário com esse nome de usuário.')
+
+        user = User.objects.create_user(username=username, email=email, password=senha)
+
+        # Adicione o usuário ao grupo Candidato
+        group = Group.objects.get(name='Candidato')
+        user.groups.add(group)
+
+        user.save()
+
+        return redirect('home')
+
+    return render(request, 'cadastro_candidato.html')
 
 #Não é boa prática enfiar esse código aqui, mas...
 #Código que verifica se o usuário atual é um superusuário

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import Permission
 
 class Vaga(models.Model):
     id = models.AutoField(primary_key=True)
@@ -31,7 +32,6 @@ class CandidatoFormulario(models.Model):
     p2 = models.CharField(max_length=255)
     p3 = models.CharField(max_length=255)
     p4 = models.CharField(max_length=255)
-    p5 = models.CharField(max_length=255)
     p5 = models.CharField(max_length=255)
     p6 = models.CharField(max_length=255)
     p7 = models.CharField(max_length=255)
