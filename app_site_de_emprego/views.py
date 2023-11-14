@@ -32,6 +32,10 @@ def candidato_panel(request):
 def empresa_panel(request):
     return render(request, 'empresa_panel.html')
 
+def curriculo(request):
+    return render(request, 'curriculo,html')
+
+
 def logout_user(request):
     logout(request)
     return redirect('home')  # Redireciona para a página inicial após o logout
