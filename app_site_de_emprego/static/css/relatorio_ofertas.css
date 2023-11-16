@@ -6,7 +6,8 @@ em caso disso ocorrer, mudar no relatorio_ofertas.html a fonte de estilo
     width: 100%;
 }
 
-.table th, .table td {
+.table th,
+.table td {
     border: 1px solid #ddd;
     padding: 8px;
 }
@@ -18,8 +19,8 @@ em caso disso ocorrer, mudar no relatorio_ofertas.html a fonte de estilo
 
 .relatorios-section {
     display: flex;
-    align-items: center;
-    margin-left: auto;
+    align-items: left;
+    margin-left: center;
 }
 
 .relatorios-button:hover {
@@ -28,6 +29,7 @@ em caso disso ocorrer, mudar no relatorio_ofertas.html a fonte de estilo
 
 .relatorios-container {
     display: flex;
-    align-items: center;
-    margin-left: auto; /* Empurra os botões para a direita da navbar */
+    align-items: left;
+    margin-left: left;
+    /* Empurra os botões para a direita da navbar */
 }

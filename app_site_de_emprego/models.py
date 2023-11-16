@@ -39,3 +39,10 @@ class CandidatoFormulario(models.Model):
     p9 = models.CharField(max_length=255)
     p10 = models.CharField(max_length=255)
 
+class Candidatura(models.Model):
+    id = models.AutoField(primary_key=True)
+    candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+    vaga = models.ForeignKey(Vaga, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Candidatura de {self.candidato.nome} para {self.vaga.titulo}"

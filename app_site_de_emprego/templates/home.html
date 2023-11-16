@@ -1,13 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site de Empregos</title>
-    <link rel="stylesheet" href="{% static 'css/homestyle.css' %}"> {#<!-- Substitua 'seu-estilo.css' pelo caminho para seu arquivo CSS -->#}
-</head>
-<style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Site de Empregos</title>
+        <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">
+        <link rel="stylesheet" href="{% static 'css/relatorio_ofertas.css' %}">
+        {#<!-- Substitua 'seu-estilo.css' pelo caminho para seu arquivo CSS -->#}
+    </head>
+    <style>
     .detalhes-button {
         background-color: #007BFF;
         color: #fff;
@@ -22,75 +24,85 @@
     .detalhes-button:hover {
         background-color: #0056b3;
     }
+
     </style>
-<body>
-    {% if messages %}
-        <ul class="messages">
-          {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href=" "><img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos"></a>
-                <h1>Encontre o Emprego dos seus Sonhos</h1>
-            </div>
-
-            <div class="welcome-message">
-                {% if request.user.is_authenticated %}
-                    <p><i class="fas fa-user"></i> Bem-vindo, {{ request.user.username }}!</p>
-                {% endif %}
-            </div>
-
-                    {% if request.user.is_authenticated %}
-<section class="relatorios-section">
-                {% if user.is_superuser %}
-            <div class="relatorios-container">
-                <a href="{% url 'relatorio_candidatos' %}" class="relatorios-button">Relatório de Candidatos</a>
-                <a href="{% url 'relatorio_ofertas' %}" class="relatorios-button">Relatório de Ofertas</a>
-            </div>
+    <body>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
         {% endif %}
-                <a href="/cadastrar_vaga" class="signup-button">Cadastre sua Vaga</a>
-                <a href="/logout" class="signup-button">Sair</a>
-</section>
-            {% else %}
-<section class="login-section">
-                <a href="/cadastro" class="signup-button">Cadastre-se</a>
-                <a href="/login" class="signup-button">Login</a>
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <a href=" ">
+                        <img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos">
+                    </a>
+                    <h1>Encontre o Emprego dos seus Sonhos</h1>
+                </div>
+                <div class="welcome-message">
+                    {% if request.user.is_authenticated %}
+                        <p>
+                            <i class="fas fa-user"></i> Bem-vindo, {{ request.user.username }}!
+                        </p>
+                    {% endif %}
+                </div>
+                {% if request.user.is_authenticated %}
+                    <section class="relatorios-section"style="padding-right: 200px;padding-left: 340px;">
+                        {% if user.is_superuser %}
+                            <div class="relatorios-container">
+                                <a href="{% url 'relatorio_candidatos' %}" class="relatorios-button">Relatório de Candidatos</a>
+                                <a href="{% url 'relatorio_ofertas' %}" class="relatorios-button">Relatório de Ofertas</a>
+                            </div>
+                        {% endif %}
+                        <a href="/cadastrar_vaga" class="signup-button">Cadastre sua Vaga</a>
+                        <a href="/logout" class="relatorios-button">Sair</a>
+                        <a href="/register" class="relatorios-button">Envie seu Curriculo</a>
+                        <a href="/registerempresa" class="relatorios-button">Registro</a>
                     </section>
-{% endif %}
-        </nav>
-    </header>
-    <section class="search-jobs">
-        <h2>Encontre Empregos</h2>
-        <form action="/pesquisar" method="GET">
-            <input type="text" name="cargo" placeholder="Digite o cargo desejado">
-            <input type="text" name="localizacao" placeholder="Digite a localização">
-           {#<!-- <button type="submit">Pesquisar</button> -->#}
-        </form>
-    </section>
-    <section class="featured-jobs">
-    {% for vaga in vagas %}
-    <div class="job-card d-flex justify-content-between align-items-center">
-        <div>
-            <h3>{{ vaga.titulo }}</h3>
-            <p>Empresa: {{ vaga.empresa }}</p>
-            <p>{{ vaga.descricao }}</p>
-        </div>
-        <div class="button-container">
-<button class="detalhes-button" onclick="mostrarDetalhes('{{ vaga.titulo }}', '{{ vaga.empresa }}', '{{ vaga.descricao }}')">Mais Detalhes</button>
-            {% if user.is_authenticated %}
-            <a href="{% url 'excluir_vaga' vaga.id %}" class="ml-2">Excluir Vaga</a>
-            {% endif %}
-        </div>
-    </div>
-    {% endfor %}
-</section>
-
-{# comment  "comment do django" #}
-<!-- <footer>
+                {% else %}
+                    <section class="login-section">
+                        <a href="/escolha" class="signup-button">Cadastre-se</a>
+                        <a href="/escolha_login" class="signup-button">Login</a>
+                    </section>
+                {% endif %}
+            </nav>
+        </header>
+        <section class="search-jobs">
+            <h2>Encontre Empregos</h2>
+            <form action="/pesquisar" method="GET">
+                <input type="text" name="cargo" placeholder="Digite o cargo desejado">
+                <input type="text" name="localizacao" placeholder="Digite a localização">
+                {#<!-- <button type="submit">Pesquisar</button> -->#}
+            </form>
+        </section>
+        <section class="featured-jobs">
+            {% for vaga in vagas %}
+                <div class="job-card d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3>{{ vaga.titulo }}</h3>
+                        <p>Empresa: {{ vaga.empresa }}</p>
+                        <p>{{ vaga.descricao }}</p>
+                    </div>
+                    <div class="button-container">
+                        <button class="detalhes-button"
+                                onclick="mostrarDetalhes('{{ vaga.titulo }}', '{{ vaga.empresa }}', '{{ vaga.descricao }}')">
+                            Mais Detalhes
+                        </button>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'excluir_vaga' vaga.id %}" class="ml-2">Excluir Vaga</a>
+                        {% endif %}
+                         {% if request.user.is_authenticated %}
+                        <a href="{% url 'candidatura_vaga' vaga.id %}" class="ml-2">Candidatar-se</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+        {# comment  "comment do django" #}
+        <!-- <footer>
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center">
@@ -110,22 +122,21 @@
     </div>
     <p class="text-center">&copy; 2023 Site de Empregos</p>
 </footer>-->
-{# end comment #}
-
-    <div id="modalDetalhes" class="modal">
-        <div class="modal-content">
-            <span class="fechar" onclick="fecharModal()">&times;</span>
-            <div id="conteudoDetalhes"></div>
+        {# end comment #}
+        <div id="modalDetalhes" class="modal">
+            <div class="modal-content">
+                <span class="fechar" onclick="fecharModal()">&times;</span>
+                <div id="conteudoDetalhes"></div>
+            </div>
         </div>
-    </div>
-    <div id="vaga-popup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="fecharPopup()">&times;</span>
-            <h2 id="popup-titulo"></h2>
-            <p id="popup-empresa"></p>
-            <p id="popup-descricao"></p>
+        <div id="vaga-popup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="fecharPopup()">&times;</span>
+                <h2 id="popup-titulo"></h2>
+                <p id="popup-empresa"></p>
+                <p id="popup-descricao"></p>
+            </div>
         </div>
-    </div>
         <script>
         function mostrarDetalhes(titulo, empresa, descricao) {
             document.getElementById("popup-titulo").textContent = titulo;
@@ -140,6 +151,6 @@
             var popup = document.getElementById("vaga-popup");
             popup.style.display = "none";
         }
-    </script>
-</body>
+        </script>
+    </body>
 </html>

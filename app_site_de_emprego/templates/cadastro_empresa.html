@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
+    <style>
+        html,
+        body {
+            display: flex;
+            justify-content: center;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        form {
+            border: 5px solid #f1f1f1;
+            width: 50%;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 16px 8px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .icon {
+            font-size: 110px;
+            display: flex;
+            justify-content: center;
+            color: #4286f4;
+        }
+
+        button {
+            background-color: #4286f4;
+            color: white;
+            padding: 14px 0;
+            margin: 10px 0;
+            border: none;
+            cursor: grab;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .formcontainer {
+            text-align: center;
+            margin: 24px 50px 12px;
+        }
+
+        .container {
+            padding: 16px 0;
+            text-align: left;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 0;
+            padding-right: 15px;
+        }
+
+        /* Change styles for span on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cadastro de Empresa</h1>
+    <div class="icon">
+        <i class="fas fa-building"></i>
+    </div>
+    <form method="post" action="{% url 'cadastro_empresa' %}">
+        {% csrf_token %}
+        <div class="formcontainer">
+            <div class="container">
+                <label for="username"><strong>Nome da Empresa</strong></label>
+                <input type="text" placeholder="Nome da Empresa" name="username" required>
+                <label for="email"><strong>Email</strong></label>
+                <input type="text" placeholder="Email" name="email" required>
+                <label for="password2"><strong>Senha</strong></label>
+                <input type="password" placeholder="Senha" name="senha" required>
+            </div>
+            <button type="submit"><strong>REGISTRAR</strong></button>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -8,7 +8,9 @@ body {
 /* Estilos do cabeçalho */
 header {
     background-color: #333;
-    /* Cor de fundo da navbar */
+
+    /* Cor de fu
+n   do da navbar */
     color: #fff;
     /* Cor do texto na navbar */
     padding: 10px;
@@ -25,11 +27,14 @@ header {
     color: #fff;
 }
 
+
 .logo img {
+
     width: 50px;
     /* Largura da logo */
     margin-right: 10px;
-    /* Espaçamento entre a logo e o título */
+    /* Espaçamento e
+n   tre a logo e o título */
 }
 
 h1 {
@@ -42,12 +47,14 @@ h1 {
     list-style-type: none;
     margin: 0;
     padding: 0;
+
 }
 
 .menu li {
     display: inline;
     margin-right: 20px;
-    /* Espaçamento entre os itens do menu */
+    /* Espaçamento ent
+r   e os itens do menu */
 }
 
 .menu a {
@@ -59,19 +66,28 @@ h1 {
 
 .menu a:hover {
     color: #ff9900;
-    /* Cor do texto ao passar o mouse por cima */
+    /* Cor do 
+exto ao passar o mouse por cima */
 }
 
-/* Estilos da seção de login */
+
+
+/* Estilos da seção de 
+   login */
 .login-section {
     margin-top: 10px;
+
 }
 
+
 .login-button,
-.signup-button {
+.signup-button,
+.relatorios-oferta {
     background-color: #ff9900;
-    /* Cor de fundo dos botões */
+    /* Cor de fundo 
+   dos botões */
     color: #fff;
+
     /* Cor do texto dos botões */
     padding: 10px 20px;
     /* Espaçamento dentro dos botões */
@@ -154,6 +170,7 @@ header p {
 
 /* Estilo para a seção de vagas em destaque */
 .featured-jobs {
+
     max-width: 800px;
     margin: 0 auto;
     display: flex;
@@ -177,6 +194,7 @@ header p {
     font-size: 20px;
     margin: 0;
 }
+
 
 .job-card p {
     margin: 10px 0;
@@ -243,6 +261,7 @@ footer a {
 
 .modal-content {
     background-color: #fefefe;
+
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -295,4 +314,18 @@ footer a {
 
 .close:hover {
     color: #000;
+}
+
+.relatorios-button {
+    background-color: #ff9900;
+    /* Cor de fundo dos botões */
+    color: #fff;
+    /* Cor do texto dos botões */
+    padding: 10px 20px;
+    /* Espaçamento dentro dos botões */
+    text-decoration: none;
+    border-radius: 5px;
+    /* Borda arredondada dos botões */
+    margin-right: 10px;
+    /* Espaçamento entre os botões */
 }

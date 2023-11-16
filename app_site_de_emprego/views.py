@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import (VagaForm,CandidatoForm)
-from .models import Vaga
+from .models import Vaga, Candidato
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import login as auth_login
 from django.contrib import messages
@@ -25,6 +25,9 @@ def registerempresa(request):
 
 def escolha(request):
     return render(request,'escolha.html')
+
+def escolha_login(request):
+    return render(request,'escolha_login.html')
 
 def candidato_panel(request):
     return render(request, 'candidato_panel.html')
@@ -80,6 +83,23 @@ def login_user(request):
         else:
             messages.error(request, 'Nome de usuário ou senha inválidos.')
             return render(request, 'login.html')
+
+def login_empresa(request):
+    if request.method == "GET":
+        return render(request, 'login_empresa.html')
+    elif request.method == "POST":
+        username = request.POST.get('username')
+        senha = request.POST.get('senha')
+
+        user = authenticate(username=username, password=senha)
+
+        if user:
+            auth_login(request, user) # Usando a função auth_login para evitar conflitos
+            messages.success(request, 'Login realizado com sucesso!')
+            return redirect('home')
+        else:
+            messages.error(request, 'Nome de usuário ou senha inválidos.')
+            return render(request, 'login_empresa.html')
 
 
 def formulario_inscricao(request):
@@ -142,6 +162,8 @@ def cadastro_empresa(request):
     return render(request, 'cadastro_empresa.html')
 
 def cadastro_candidato(request):
+    if request.method == "GET":
+        return render(request, 'cadastro_candidato.html')
     if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -177,8 +199,13 @@ def is_superuser(user):
 
 @user_passes_test(is_superuser)
 def relatorio_candidatos(request):
+    # Recupera todos os candidatos
     candidatos = Candidato.objects.all()
-    return render(request, 'relatorio_candidatos.html', {'candidatos': candidatos})
+
+    # Passa candidatos para o template
+    context = {'candidatos': candidatos}
+    return render(request, 'relatorio_candidatos.html', context)
+
 
 @user_passes_test(is_superuser)
 def relatorio_ofertas(request):
