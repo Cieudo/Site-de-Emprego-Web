@@ -1,0 +1,51 @@
+{% block content %}
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #007bff; /* Cor azul */
+    }
+
+    p {
+      font-size: 18px;
+      color: #343a40; /* Cor cinza escuro */
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #28a745; /* Cor verde */
+      color: #fff; /* Cor branca */
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .fa-icon {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+  </style>
+
+  <div class="container">
+    <h2><i class="far fa-file-alt fa-icon"></i> Candidatura para a Vaga "{{ vaga.titulo }}"</h2>
+    <p>Empresa: {{ vaga.empresa }}</p>
+    <p>Descrição da Vaga: {{ vaga.descricao }}</p>
+
+    <form method="post" action="{% url 'processar_candidatura' vaga.id %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit"><i class="far fa-check-circle fa-icon"></i> Enviar Candidatura</button>
+    </form>
+  </div>
+{% endblock %}

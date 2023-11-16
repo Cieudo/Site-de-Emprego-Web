@@ -1,0 +1,40 @@
+{% block content %}
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #007bff; /* Cor azul */
+    }
+
+    p {
+      font-size: 18px;
+      color: #28a745; /* Cor verde */
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      color: #dc3545; /* Cor vermelha */
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .fa-icon {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+  </style>
+
+  <div class="container">
+    <h2><i class="far fa-check-circle fa-icon"></i> Candidatura enviada com sucesso!</h2>
+    <p>Obrigado por se candidatar. Sua candidatura foi recebida com sucesso.</p>
+    <a href="{% url 'home' %}">Voltar para a página inicial</a>
+  </div>
+{% endblock %}

@@ -181,3 +181,45 @@ def relatorio_candidatos(request):
 def relatorio_ofertas(request):
     vagas = Vaga.objects.all()
     return render(request, 'relatorio_ofertas.html', {'vagas': vagas})
+    def candidatura_vaga(request, vaga_id):
+    vaga = get_object_or_404(Vaga, id=vaga_id)
+
+    if request.method == 'POST':
+        form = CandidaturaForm(request.POST)
+        if form.is_valid():
+            candidatura = form.save(commit=False)
+            candidatura.candidato = request.user.candidato  # Supondo que cada usuário Candidato tenha um perfil associado
+            candidatura.save()
+            return redirect('candidatura_confirmada')  # Redireciona para a página de confirmação
+    else:
+        form = CandidaturaForm()
+
+    return render(request, 'candidatura_vaga.html', {'form': form, 'vaga': vaga})
+
+
+def processar_candidatura(request, vaga_id):
+    if request.method == 'POST':
+        vaga = get_object_or_404(Vaga, id=vaga_id)
+
+        # Verifica se o usuário está autenticado e possui um perfil de candidato
+        if request.user.is_authenticated and hasattr(request.user, 'candidato'):
+            candidato = request.user.candidato
+
+            # Verifica se o candidato já se candidatou para a mesma vaga
+            if Candidatura.objects.filter(vaga=vaga, candidato=candidato).exists():
+                messages.error(request, 'Você já se candidatou para esta vaga anteriormente.')
+                return redirect('candidatura_vaga', vaga_id=vaga_id)
+
+            # Se não, cria a candidatura
+            Candidatura.objects.create(vaga=vaga, candidato=candidato)
+
+            # Redireciona para a página de confirmação de candidatura
+            return redirect('candidatura_confirmada')
+        else:
+            # Trate o caso em que o usuário não possui um perfil de candidato
+            return HttpResponse('Você precisa ter um perfil de candidato para se candidatar.')
+
+    # Restante da lógica para renderizar o formulário, se necessário
+    # ...
+
+    return render(request, 'sua_template.html', context)

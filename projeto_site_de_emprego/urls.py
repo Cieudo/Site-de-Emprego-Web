@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from app_site_de_emprego import views
+from app_site_de_emprego.views import cadastro_empresa, cadastro_candidato, candidatura_confirmada, candidatura_vaga
+
 
 urlpatterns = [
     path('', views.home, name='home'), # URL raiz correspondendo à função home
@@ -19,4 +21,9 @@ urlpatterns = [
     path('cadastro/', views.cadastro, name='cadastro'),
     path('relatorio/candidatos/', views.relatorio_candidatos, name='relatorio_candidatos'),
     path('relatorio/ofertas/', views.relatorio_ofertas, name='relatorio_ofertas'),
+    path('cadastro/empresa/', cadastro_empresa, name='cadastro_empresa'),
+    path('cadastro/candidato/', cadastro_candidato, name='cadastro_candidato'),
+    path('processar_candidatura/<int:vaga_id>/', views.processar_candidatura, name='processar_candidatura'),
+    path('candidatura_vaga/<int:vaga_id>/', candidatura_vaga, name='candidatura_vaga'),
+    path('candidatura_confirmada/', candidatura_confirmada, name='candidatura_confirmada'),
 ]
