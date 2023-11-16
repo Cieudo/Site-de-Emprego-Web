@@ -37,6 +37,13 @@
                 <a href=" "><img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos"></a>
                 <h1>Encontre o Emprego dos seus Sonhos</h1>
             </div>
+
+            <div class="welcome-message">
+                {% if request.user.is_authenticated %}
+                    <p><i class="fas fa-user"></i> Bem-vindo, {{ request.user.username }}!</p>
+                {% endif %}
+            </div>
+
                     {% if request.user.is_authenticated %}
 <section class="relatorios-section">
                 {% if user.is_superuser %}

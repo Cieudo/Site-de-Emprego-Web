@@ -29,6 +29,9 @@ def escolha(request):
 def candidato_panel(request):
     return render(request, 'candidato_panel.html')
 
+def candidatura_confirmada(request):
+    return render(request, 'candidatura_confirmada.html')
+
 def empresa_panel(request):
     return render(request, 'empresa_panel.html')
 
@@ -181,7 +184,8 @@ def relatorio_candidatos(request):
 def relatorio_ofertas(request):
     vagas = Vaga.objects.all()
     return render(request, 'relatorio_ofertas.html', {'vagas': vagas})
-    def candidatura_vaga(request, vaga_id):
+
+def candidatura_vaga(request, vaga_id):
     vaga = get_object_or_404(Vaga, id=vaga_id)
 
     if request.method == 'POST':
