@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/curriculo.css' %}">
+  </head>
+  <body>
+  <div class="testbox">
+      <form action="/">
+        <div class="banner">
+          <img src="{% static 'curriculo.png' %}" alt="Logo do Site de Empregos">
+        </div>
+        <p>Preencha com as informações para seu Currículo</p>
+        <div class="item">
+          <label for="name">Nome<span>*</span></label>
+          <input id="name" type="text" name="name" required/>
+        </div>
+        <div class="item">
+          <label for="email">E- mail <span>*</span></label>
+          <input id="email" type="email" name="email" required/>
+        </div>
+          <div class="item">
+          <p>Disponibilidade</p>
+          <select>
+            <option selected value="" disabled selected></option>
+            <option value="course-type" >Manhã</option>
+            <option value="short-courses">Tarde</option>
+            <option value="featured-courses">Integral</option>
+            <option value="undergraduate">Estágio</option>
+          </select>
+        </div>
+          <div class="item">
+    <label for="cv">Currículo em PDF </label>
+    <input type="file" id="cv" name="cv" accept=".pdf" />
+    <small>Selecione um arquivo PDF com seu currículo, se desejar.</small>
+          </div>
+</div>
+          </div>
+        </div>
+        <div class="btn-block">
+          <button type="submit" href="{% url 'home' %}">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

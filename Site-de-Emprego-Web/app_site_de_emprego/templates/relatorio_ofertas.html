@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Ofertas de Vagas</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/relatorio_ofertas.css' %}">
+</head>
+<body>
+    <h1>Relatório de Ofertas de Vagas</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Empresa</th>
+                <th>Localidade</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vaga in vagas %}
+                <tr>
+                    <td>{{ vaga.titulo }}</td>
+                    <td>{{ vaga.empresa }}</td>
+                    <td>{{ vaga.localidade }}</td>
+                    <td>{{ vaga.descricao }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
