@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha uma opção</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/escolha.css' %}">    
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha uma opção:</h1>
+        <div class="options">
+            <div class="option">
+                <i class="fas fa-building icon"></i>
+                <a href="/registerempresa"</a>
+                <h2>Empresário</h2>
+                <p>Clique aqui se você é um empresário.</p>
+            </div>
+            <div class="option">
+                <i class="fas fa-user icon"></i>
+                <a href="/cadastro"</a>
+                <h2>Candidato</h2>
+                <p>Clique aqui se você é um candidato.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

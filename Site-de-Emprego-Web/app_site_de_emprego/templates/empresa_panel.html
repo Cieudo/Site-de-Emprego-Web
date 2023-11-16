@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel da Empresa</title>
+    <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href=" "><img src="{% static 'jobslogo.jpg' %}" alt="Logo do Site de Empregos"></a>
+                <h1>Encontre o Emprego dos seus Sonhos</h1>
+            </div>
+        </nav>
+        <section class="login-section">
+            <a href="/minhas_vagas" class="login-button">Minhas Vagas</a>
+            <a href="#" class="signup-button">Sair</a>
+        </section>
+    </header>
+
+    {#<!-- Conteúdo específico para o painel da empresa -->#}
+
+</body>
+</html>

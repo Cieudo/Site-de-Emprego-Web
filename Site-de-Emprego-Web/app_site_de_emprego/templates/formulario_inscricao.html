@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulário de Inscrição</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/formulario_inscricao.css' %}">    
+  </head>
+  {% block content %}
+  <body>
+    <div class="container">
+      <div class="banner">
+        <img src="{% static 'form.png' %}" alt="Logo do Site de Empregos">
+      </div>
+      <p>Formulário de Inscrição (Questões de Perfil)</p>
+      <form method="post">
+        {% csrf_token %}        
+        <label for="{{ form.p1.id_for_label }}"><i class="far fa-comment fa-icon"></i> 1. Qual a sua disponibilidade de horários?</label> 
+        {{ form.p1 }}       
+        <label for="{{ form.p2.id_for_label }}"><i class="far fa-comment fa-icon"></i> 2. Qual o seu maior sonho?</label> 
+        {{ form.p2 }}       
+        <label for="{{ form.p3.id_for_label }}"><i class="far fa-comment fa-icon"></i> 3. Quais os seus objetivos para o futuro e o que tem feito para alcançá-los?</label> 
+        {{ form.p3 }}       
+        <label for="{{ form.p4.id_for_label }}"><i class="far fa-comment fa-icon"></i> 4. Por favor, nos conte o maior feito da sua vida até agora, algo que conseguiu e se orgulha muito?</label> 
+        {{ form.p4 }}       
+        <label for="{{ form.p5.id_for_label }}"><i class="far fa-comment fa-icon"></i> 5. Faça uma breve análise pessoal e nos conte pontos que precisa melhorar em seu comportamento?</label> 
+        {{ form.p5 }}       
+        <label for="{{ form.p6.id_for_label }}"><i class="far fa-comment fa-icon"></i> 6. O que mais valoriza em uma empresa?</label> 
+        {{ form.p6 }}       
+        <label for="{{ form.p7.id_for_label }}"><i class="far fa-comment fa-icon"></i> 7. O que não tolera no ambiente de trabalho?</label> 
+        {{ form.p7 }}       
+        <label for="{{ form.p8.id_for_label }}"><i class="far fa-comment fa-icon"></i> 8. Como pretende estar daqui a 5 anos?</label> 
+        {{ form.p8 }}       
+        <label for="{{ form.p9.id_for_label }}"><i class="far fa-comment fa-icon"></i> 9. Nos conte alguma sistuação difícil que já passou e como lidou com ela?</label> 
+        {{ form.p9 }}       
+        <label for="{{ form.p10.id_for_label }}"><i class="far fa-comment fa-icon"></i>10. Porque a empresa deve contratar você?</label> 
+        {{ form.p10 }}       
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </body>
+  {% endblock %}
